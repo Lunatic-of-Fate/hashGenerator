@@ -37,3 +37,12 @@ bootJar {
     archiveClassifier = '' // Убирает суффикс "-plain"
     mainClass = 'org.lunatic.Main' // Укажите ваш main-класс
 }
+
+tasks.register('runDocker', Exec) {
+    commandLine 'docker', 'run', '-d', '--name',
+            'hash-generator', '--network', 'my-network', '-p', '8080:8080', 'hash-generator'
+}
+
+tasks.register('buildDocker', Exec) {
+    commandLine 'docker', 'build', '-t', 'hash-generator:latest', '.'
+}
