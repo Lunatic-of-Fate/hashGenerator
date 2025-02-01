@@ -1,7 +1,9 @@
 package org.lunatic.services;
 
-import org.lunatic.DTO.HashResponseDTO;
+import org.lunatic.DTO.HashDTO;
+import org.lunatic.DTO.HashSearchDTO;
 
 public interface HashService {
-    HashResponseDTO get();
+    HashDTO search(HashSearchDTO dto);
+    HashDTO create();
 }

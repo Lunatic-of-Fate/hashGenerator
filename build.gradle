@@ -19,6 +19,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:3.4.1'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.4.1'
     implementation 'org.postgresql:postgresql:42.5.0'
+    implementation 'org.modelmapper:modelmapper:2.4.4'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.4'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.11.4'
@@ -26,16 +27,15 @@ dependencies {
     testImplementation 'org.assertj:assertj-core:3.27.3'
     testImplementation 'org.mockito:mockito-junit-jupiter:5.15.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:3.4.1'
-
-
 }
+
 test {
     useJUnitPlatform()
 }
 
 bootJar {
-    archiveClassifier = '' // Убирает суффикс "-plain"
-    mainClass = 'org.lunatic.Main' // Укажите ваш main-класс
+    archiveClassifier = ''
+    mainClass = 'org.lunatic.Main'
 }
 
 tasks.register('runDocker', Exec) {

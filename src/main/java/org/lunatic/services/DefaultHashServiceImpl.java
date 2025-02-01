@@ -2,9 +2,11 @@ package org.lunatic.services;
 
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
-import org.lunatic.DTO.HashResponseDTO;
+import org.lunatic.DTO.HashDTO;
+import org.lunatic.DTO.HashSearchDTO;
 import org.lunatic.models.Hash;
 import org.lunatic.repositories.HashJpaRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.nio.ByteBuffer;
@@ -13,38 +15,27 @@ import java.util.Base64;
 @AllArgsConstructor
 @Service
 public class DefaultHashServiceImpl implements HashService {
-    private final HashJpaRepository hashJpaRepository;
+    private final HashJpaRepository repository;
+    private final ModelMapper mapper;
+    private final HashGeneratorService hashGeneratorService;
 
-    public HashResponseDTO get() {
-        Hash hash = hashJpaRepository.findFirstByReservedFalse();
-        if (hash == null) {
-            generateHash();
-            hash = hashJpaRepository.findFirstByReservedFalse();
-        }
-        hash.setReserved(true);
-        hashJpaRepository.save(hash);
-        return new HashResponseDTO(hash.getHash());
+    @Override
+    public HashDTO search(HashSearchDTO dto) {
+        return mapper.map(repository.findAllByHash(dto.hash), HashDTO.class);
     }
 
+    @Override
     @PostConstruct
-    private void generateHash() {
-        double scalingFactor = 1.5;
-        long startGenerateId = hashJpaRepository.count() + 1;
-        for (long newId = startGenerateId; newId < startGenerateId * scalingFactor; newId++) {
-            Hash hash = new Hash(
-                    newId,
-                    encodeNumberToBase64(newId),
-                    false
-            );
-            hashJpaRepository.save(hash);
+    public HashDTO create() {
+        Hash entity = repository.findFirstByUsedIsFalse();
+        if (entity == null) {
+            double scalingFactor = 1.5;
+            long startGenerateId = repository.count() + 1;
+            for (long newId = startGenerateId; newId < startGenerateId * scalingFactor; newId++) {
+                repository.save(new Hash(hashGeneratorService.generateHash(newId), false));
+            }
+            entity = repository.findFirstByUsedIsFalse();
         }
-    }
-
-    //    Тут можно сделать многопоточную генерацию хэшей для ускорения работы
-    private String encodeNumberToBase64(long number) {
-        ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
-        buffer.putLong(number);
-        byte[] byteArray = buffer.array();
-        return Base64.getUrlEncoder().encodeToString(byteArray);
+        return mapper.map(entity, HashDTO.class);
     }
 }
