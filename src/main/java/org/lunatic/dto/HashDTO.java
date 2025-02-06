@@ -1,8 +1,6 @@
-package org.lunatic.DTO;
+package org.lunatic.dto;
 
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
 @Builder
 public class HashDTO {

@@ -1,4 +1,4 @@
-package org.lunatic.DTO;
+package org.lunatic.dto;
 
 import lombok.Builder;
 
