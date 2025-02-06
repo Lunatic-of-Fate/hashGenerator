@@ -1,11 +1,9 @@
 package org.lunatic.services;
 
 import lombok.RequiredArgsConstructor;
-import org.lunatic.DTO.HashDTO;
 import org.springframework.stereotype.Service;
 
 import java.nio.ByteBuffer;
-import java.security.SecureRandom;
 import java.util.Base64;
 
 
@@ -19,5 +17,3 @@ public class DefaultHashGeneratorService implements HashGeneratorService {
         return Base64.getUrlEncoder().encodeToString(byteArray);
     }
 }
-
-

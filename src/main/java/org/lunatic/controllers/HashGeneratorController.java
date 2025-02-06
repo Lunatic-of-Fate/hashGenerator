@@ -2,7 +2,7 @@ package org.lunatic.controllers;
 
 
 import lombok.AllArgsConstructor;
-import org.lunatic.DTO.HashDTO;
+import org.lunatic.dto.HashDTO;
 import org.lunatic.services.HashService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
