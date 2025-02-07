@@ -15,11 +15,9 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-@Testcontainers
 @SpringBootTest
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class HashServiceIntegrationTest implements WithAssertions, WithBDDMockito {
-    @Autowired
     HashService hashService;
     @MockitoBean
     HashGeneratorService hashGeneratorService;

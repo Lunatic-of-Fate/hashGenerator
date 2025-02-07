@@ -8,7 +8,6 @@ import java.util.Base64;
 
 
 @Service
-@RequiredArgsConstructor
 public class DefaultHashGeneratorService implements HashGeneratorService {
     public String generateHash(long number) {
         ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);

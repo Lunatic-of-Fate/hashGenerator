@@ -16,5 +16,5 @@ import lombok.Setter;
 public class Hash {
     @Id
     private String hash;
-    private boolean isUsed;
+    private boolean used;
 }
