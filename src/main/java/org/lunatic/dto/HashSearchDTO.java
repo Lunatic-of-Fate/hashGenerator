@@ -1,8 +1,12 @@
 package org.lunatic.dto;
 
-import lombok.Builder;
+import lombok.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
+@Getter
+@Setter
 public class HashSearchDTO {
-    public final String hash;
+    private String hash;
 }

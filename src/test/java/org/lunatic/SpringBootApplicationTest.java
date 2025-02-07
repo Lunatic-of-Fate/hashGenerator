@@ -20,6 +20,7 @@ public abstract class SpringBootApplicationTest {
     @Container
     public static PostgreSQLContainer<?> postgreSQLContainer
             = new PostgreSQLContainer<>("postgres:15-alpine")
+
             .withReuse(true)
             .withDatabaseName(DATABASE_NAME);
 

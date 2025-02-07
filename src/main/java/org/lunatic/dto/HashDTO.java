@@ -1,9 +1,16 @@
 package org.lunatic.dto;
 
-import lombok.Builder;
+import lombok.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
+@Getter
+@Setter
+
 public class HashDTO {
-    public final String hash;
-    public final boolean isUsed;
+    private String hash;
+    private boolean used;
 }
+
+

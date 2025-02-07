@@ -19,7 +19,7 @@ public class DefaultHashServiceImpl implements HashService {
 
     @Override
     public HashDTO search(HashSearchDTO dto) {
-        return mapper.map(repository.findFirstByHash(dto.hash), HashDTO.class);
+        return mapper.map(repository.findFirstByHash(dto.getHash()), HashDTO.class);
     }
 
     @Override
