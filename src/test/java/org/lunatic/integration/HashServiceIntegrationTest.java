@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.lunatic.SpringBootApplicationTest;
 import org.lunatic.dto.HashDTO;
 import org.lunatic.dto.HashSearchDTO;
-import org.lunatic.models.Hash;
 import org.lunatic.services.HashGeneratorService;
 import org.lunatic.services.HashService;
 import org.springframework.beans.factory.annotation.Autowired;
