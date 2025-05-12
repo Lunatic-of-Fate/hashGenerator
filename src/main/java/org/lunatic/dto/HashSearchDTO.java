@@ -8,5 +8,5 @@ import lombok.*;
 @Getter
 @Setter
 public class HashSearchDTO {
-    private String hash;
+    public String hash;
 }

@@ -30,7 +30,8 @@ public class HashServiceIntegrationTest extends SpringBootApplicationTest implem
 
         assertAll(
                 () -> assertThat(dto).isNotNull(),
-                () -> assertThat(dto.getHash()).isEqualTo("new_hash")
+                () -> assertThat(dto.getHash()).isEqualTo("new_hash"),
+                () -> assertThat(dto.isUsed).isEqualTo(true)
         );
     }
 

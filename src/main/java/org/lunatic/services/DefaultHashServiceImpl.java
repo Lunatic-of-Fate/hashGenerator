@@ -33,6 +33,8 @@ public class DefaultHashServiceImpl implements HashService {
             }
             entity = repository.findFirstByUsedIsFalse();
         }
+        entity.setUsed(true);
+        repository.save(entity);
         return mapper.map(entity, HashDTO.class);
     }
 }

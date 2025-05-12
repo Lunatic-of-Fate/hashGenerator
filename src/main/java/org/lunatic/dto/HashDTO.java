@@ -7,10 +7,9 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-
 public class HashDTO {
-    private String hash;
-    private boolean used;
+    public String hash;
+    public boolean isUsed;
 }
 
 

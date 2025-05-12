@@ -1,19 +1,18 @@
 package org.lunatic.unit;
 
 
-import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.Test;
-import org.lunatic.SpringBootApplicationTest;
-import org.lunatic.services.HashGeneratorService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.lunatic.services.DefaultHashGeneratorService;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@SpringBootTest
-@RequiredArgsConstructor(onConstructor_ = @Autowired)
-class HashGeneratorServiceTest extends SpringBootApplicationTest implements WithAssertions {
 
-    private final HashGeneratorService generator;
+@ExtendWith(MockitoExtension.class)
+class HashGeneratorServiceTest implements WithAssertions {
+    @InjectMocks
+    private DefaultHashGeneratorService generator;
 
     @Test
     void generateHash_correctNumber() {
