@@ -31,6 +31,9 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     // Tests
+    testImplementation 'org.mockito:mockito-core:4.0.0' // Убедитесь, что версия актуальна
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.0.0' //
+    testImplementation 'info.solidsoft.mockito:mockito-java8:2.0.0' // если в эту входят две выше, то их удалить
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.testcontainers:postgresql:1.20.4'
     testImplementation 'org.testcontainers:junit-jupiter:1.20.4'
@@ -43,13 +46,14 @@ test {
 }
 
 bootJar {
+    archiveBaseName = 'hash-generator'
     archiveClassifier = ''
     mainClass = 'org.lunatic.Main'
 }
 
 tasks.register('buildDocker', Exec) {
     dependsOn 'bootJar'
-    commandLine 'docker', 'build', '-t', 'hash-generator:latest', '.'
+    commandLine 'docker', 'build', '-t', 'hash-generator:v1.0', '.'
 }
 
 tasks.register('runDocker', Exec) {

@@ -1,10 +1,6 @@
 package org.lunatic;
 
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.util.TestPropertyValues;
-import org.springframework.context.ApplicationContextInitializer;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.*;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
@@ -20,7 +16,6 @@ public abstract class SpringBootApplicationTest {
     @Container
     public static PostgreSQLContainer<?> postgreSQLContainer
             = new PostgreSQLContainer<>("postgres:15-alpine")
-
             .withReuse(true)
             .withDatabaseName(DATABASE_NAME);
 
