@@ -47,6 +47,7 @@ test {
 
 bootJar {
     archiveBaseName = 'hash-generator'
+    archiveClassifier = ''
     mainClass = 'org.lunatic.Main'
 }
 
