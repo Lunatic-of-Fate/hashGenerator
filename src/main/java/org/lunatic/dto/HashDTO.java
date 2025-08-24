@@ -8,8 +8,6 @@ import lombok.*;
 @Getter
 @Setter
 public class HashDTO {
-    public String hash;
-    public boolean isUsed;
+    private String hash;
+    private boolean used;
 }
-
-
